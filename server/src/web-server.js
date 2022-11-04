@@ -21,11 +21,11 @@ exports.createWebServer = function () {
     res.send('server is working');
   });
 
-  app.post('/api/add', async (req, res) => {
+  app.post('/api/flashcard', async (req, res) => {
     res.send('hello world');
   })
 
-  app.get('/api/random', async (req, res) => {
+  app.get('/api/flashcard', async (req, res) => {
     const data = await model.selectRandomFlashCard();
     res.send({data});
   })
