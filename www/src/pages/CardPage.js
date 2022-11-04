@@ -11,6 +11,7 @@ export default function CardPage () {
   const [hint, setHint] = useState("");
   const [answer, setAnswer] = useState("");
   const [show, setShow] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     updateCard();
@@ -20,6 +21,7 @@ export default function CardPage () {
     if (fetching === true) return;
     try {
       fetching = true;
+      setButtonDisabled(true);
       const resp = await API.getNewCard();
       if (resp?.data) {
         setAnswer(resp.data.answer);
@@ -29,7 +31,13 @@ export default function CardPage () {
       console.log(error);
     } finally {
       fetching = false;
+      setButtonDisabled(false);
     }
+  }
+
+  async function onClickNextCard () {
+    setShow(false);
+    await updateCard();
   }
 
   return (
@@ -45,12 +53,14 @@ export default function CardPage () {
       {
         show ? (
         <Button
+          disabled={buttonDisabled}
           variant='contained'
-          onClick={() => { setShow(false);}}
+          onClick={onClickNextCard}
         >
           Next
         </Button>) : (
         <Button
+          disabled={buttonDisabled}
           variant='contained'
           onClick={() => { setShow(true);}}
         >
