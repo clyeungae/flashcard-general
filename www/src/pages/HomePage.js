@@ -1,4 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 export default function HomePage () {
   return (
@@ -11,8 +13,10 @@ export default function HomePage () {
         paddingBottom: "1rem",
       }}
     >
-      <Link to="/">Play Card</Link> |{" "}
-      <Link to="/add">Add card</Link>
+        <ButtonGroup variant="text" aria-label="text button group">
+          <Button><Link to="/">Play Card</Link></Button>
+          <Button> <Link to="/add">Add card</Link></Button>
+        </ButtonGroup>
     </nav>
     <Outlet />
 
