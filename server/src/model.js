@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+const dayjs = require('dayjs');
 
 let connection;
 
@@ -39,10 +40,10 @@ exports.selectFlashCard = async function (id) {
 
 exports.insertFlashCard = async function (keyword, answer) {
   const [rs] = await connection.execute(
-    'INSERT INTO `flashcard` VALUES(NULL, ?, ?)',
-    [keyword, answer]
+    'INSERT INTO `flashcard` VALUES(NULL, ?, ?, ?, ?)',
+    [keyword, answer, dayjs().unix(), dayjs().unix()]
   );
 
-  if (rs.length === 0) throw new Error('flashcard not found');
-  return rs[0];
+  if (rs.length === 0) throw new Error('flashcard cannot be inserted');
+  return rs;
 }
