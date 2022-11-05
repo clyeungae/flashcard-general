@@ -1,11 +1,6 @@
 const router = require('express').Router();
 const model = require('../model');
 
-router.use((req, res, next) => {
-  console.log({req});
-  next();
-})
-
 router.get('/', function (req, res) {
   res.send('server is working');
 });
