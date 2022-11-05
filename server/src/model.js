@@ -6,8 +6,8 @@ let connection;
 exports.init = async function (_opts) {
   const opts = _opts || {
     host: 'db',
-    user: 'root',
-    password: 'password',
+    user: 'sys',
+    password: 'syspass',
     database: 'dev'
   };
   connection = await mysql.createConnection(opts);
