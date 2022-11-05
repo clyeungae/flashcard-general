@@ -24,14 +24,14 @@ services:
   server:
     depends_on:
       - db
-    image: server-flashcard
+    build: ./server
     restart: always
     ports:
       - 3001:3001
   www:
     depends_on:
       - server
-    image: www-flashcard
+    build: ./www
     ports:
       - 3000:3000
 
