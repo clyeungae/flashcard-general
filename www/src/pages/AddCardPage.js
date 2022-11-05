@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormInputText from '../component/form/FormTextInput';
+import * as API from '../lib/api';
 
 export default function AddCardPage () {
   const {
@@ -11,7 +12,7 @@ export default function AddCardPage () {
   } = useForm();
 
   async function addRecord (data) {
-    console.log(data);
+    const rs = await API.addNewCard(data);
   }
   return (
     <Container sx={{padding: "5%"}}>
