@@ -1,13 +1,15 @@
 
 services:
   db:
-    image: mysql:8
+    build: ./db
     restart: always
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: dev
+      MYSQL_USER: sys
+      MYSQL_PASSWORD: syspass
     volumes:
       - mysql-data:/var/lib/mysql
   pma:
