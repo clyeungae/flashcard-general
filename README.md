@@ -5,9 +5,7 @@
 
 ### Procedures
 ```
-docker build -t server-flashcard server
-docker build -t www-flashcard www
-docker compose up
+docker compose up [--build]
 ```
 ### License
 [MIT License](https://opensource.org/licenses/mit-license.php)
