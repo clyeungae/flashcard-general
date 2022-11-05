@@ -9,10 +9,14 @@ export default function AddCardPage () {
   const {
     control,
     handleSubmit,
+    reset,
   } = useForm();
 
   async function addRecord (data) {
     const rs = await API.addNewCard(data);
+    if (rs?.success === 1) {
+      reset();
+    }
   }
   return (
     <Container sx={{padding: "5%"}}>
