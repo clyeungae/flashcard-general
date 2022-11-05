@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { toast } from 'react-toastify';
 import * as API from '../lib/api';
 
 let fetching = false;
@@ -26,9 +27,12 @@ export default function CardPage () {
       if (resp?.data) {
         setAnswer(resp.data.answer);
         setHint(resp.data.hint);
+        return;
       }
+      toast.error('Cannot get flashcard');
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error('Cannot get flashcard');
     } finally {
       fetching = false;
       setButtonDisabled(false);
